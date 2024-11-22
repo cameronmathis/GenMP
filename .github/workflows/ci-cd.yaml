@@ -24,6 +24,9 @@ jobs:
 
             - name: Build project
               run: CI=false npm run build
+              env:
+                  REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}
+                  REACT_APP_APISecret: ${{ secrets.REACT_APP_APISecret }}
 
             # - name: Run tests
             #   run: npm run test
