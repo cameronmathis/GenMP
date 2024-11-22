@@ -23,12 +23,12 @@ jobs:
               run: npm i --legacy-peer-deps
 
             - name: Print VITE_GOOGLE_GEMINI_API_KEY
-              run: echo "VITE_GOOGLE_GEMINI_API_KEY is $VITE_GOOGLE_GEMINI_API_KEY!"
+              run: echo "VITE_GOOGLE_GEMINI_API_KEY is ${{ vars.SOME_ACTION_VARIABLE }}!"
 
             - name: Build project
               run: CI=false npm run build
               env:
-                  VITE_GOOGLE_GEMINI_API_KEY: ${{ env.VITE_GOOGLE_GEMINI_API_KEY }}
+                  VITE_GOOGLE_GEMINI_API_KEY: ${{ vars.VITE_GOOGLE_GEMINI_API_KEY }}
 
             # - name: Run tests
             #   run: npm run test
