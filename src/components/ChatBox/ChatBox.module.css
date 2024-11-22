@@ -5,6 +5,6 @@
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
-    padding-bottom: 20px; /* Add space at the bottom */
+    padding: 20px 0px; /* Add space at the top & bottom */
     overflow-y: auto; /* Scrollable if content exceeds available space */
 }
