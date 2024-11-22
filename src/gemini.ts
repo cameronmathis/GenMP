@@ -4,13 +4,13 @@ import {
     HarmCategory,
 } from '@google/generative-ai';
 
-const API_KEY = import.meta.env.VITE_GOOGLE_GEMINI_API_KEY;
+// const API_KEY = import.meta.env.VITE_GOOGLE_GEMINI_API_KEY;
+const API_KEY = null;
 const MODEL_NAME = 'gemini-1.0-pro';
 
 export async function sendPrompt(prompt) {
     if (!API_KEY) {
-        console.error('No API Key present.');
-        return;
+        throw new Error('No API Key present.');
     }
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
@@ -49,6 +49,5 @@ export async function sendPrompt(prompt) {
 
     const result = await chat.sendMessage(prompt);
     const response = result.response;
-    console.log(response.text());
     return response.text();
 }
