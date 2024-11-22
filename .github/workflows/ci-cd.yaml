@@ -2,7 +2,8 @@ name: CI/CD
 
 on:
     push:
-        branches: [develop]
+        branches:
+            - develop
 
 jobs:
     build:
@@ -16,7 +17,7 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v1
               with:
-                  node-version: 14.x
+                  node-version: 13.x
 
             - name: Install NPM packages
               run: npm i --legacy-peer-deps
@@ -37,6 +38,7 @@ jobs:
         name: Deploy
         needs: build
         runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/develop'
 
         steps:
             - name: Download artifact
@@ -46,7 +48,7 @@ jobs:
                   path: ./dist
 
             - name: Deploy to gh-pages
-              uses: peaceiris/actions-gh-pages@v4
+              uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./dist
