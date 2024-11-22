@@ -1,6 +1,6 @@
 /* Sidebar container */
 .sidebar {
-    height: 100vh;
+    height: 100%;
     background-color: #f7f7f7; /* Light gray background */
     color: black; /* Text color */
     display: flex;

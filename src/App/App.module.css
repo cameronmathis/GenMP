@@ -3,4 +3,7 @@
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
     color: #202124;
+    height: 100vh; /* Full height of the screen */
+    width: 100vw; /* Full width of the screen */
+    overflow: hidden; /* Prevent any accidental scrolling of the entire app */
 }

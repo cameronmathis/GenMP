@@ -1,6 +1,6 @@
 .messageContainer {
     width: 100%; /* Make sure it takes up full available width */
-    max-width: 810px; /* Set a max width of 810px for regular laptop sizes */
+    max-width: 710px; /* Set a max width of 810px for regular laptop sizes */
     padding: 12px 16px;
     border-radius: 30px;
     border: 1px solid #ccc; /* Light border color */
@@ -25,18 +25,18 @@
 /* Media query to handle responsiveness */
 @media (max-width: 1024px) {
     .messageContainer {
-        max-width: 90%; /* Shrinks to 90% of the screen width on smaller laptops/tablets */
+        max-width: 80%; /* Shrinks to 90% of the screen width on smaller laptops/tablets */
     }
 }
 
 @media (max-width: 768px) {
     .messageContainer {
-        max-width: 80%; /* Shrinks to 80% on tablets and below */
+        max-width: 70%; /* Shrinks to 80% on tablets and below */
     }
 }
 
 @media (max-width: 480px) {
     .messageContainer {
-        max-width: 70%; /* Further shrinks to 70% on mobile devices */
+        max-width: 55%; /* Further shrinks to 70% on mobile devices */
     }
 }
