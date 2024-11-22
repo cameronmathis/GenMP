@@ -8,7 +8,6 @@ const API_KEY = import.meta.env.VITE_GOOGLE_GEMINI_API_KEY;
 const MODEL_NAME = 'gemini-1.0-pro';
 
 export async function sendPrompt(prompt) {
-    console.log(API_KEY);
     if (!API_KEY) {
         return;
     }
