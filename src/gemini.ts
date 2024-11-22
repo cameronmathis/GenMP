@@ -9,6 +9,7 @@ const MODEL_NAME = 'gemini-1.0-pro';
 
 export async function sendPrompt(prompt) {
     if (!API_KEY) {
+        console.error('No API Key present.');
         return;
     }
     const genAI = new GoogleGenerativeAI(API_KEY);
