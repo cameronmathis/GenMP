@@ -1,0 +1,57 @@
+/* Sidebar container */
+.sidebar {
+    height: 100vh;
+    background-color: #f7f7f7; /* Light gray background */
+    color: black; /* Text color */
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 240px; /* Default expanded width */
+    transition: width 0.3s ease-in-out; /* Smooth transition for width */
+    border-right: 1px solid #ccc; /* Light gray border on the right */
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 0 12px 12px 0; /* Rounded corners on the right side */
+}
+
+/* When sidebar is collapsed */
+.collapsed {
+    width: 64px; /* Collapsed width */
+}
+
+/* Collapse button (Hamburger Menu Icon from Material UI) */
+.collapseButton {
+    position: absolute;
+    top: 20px; /* Space from the top */
+    left: 20px; /* Space from the left */
+    background-color: transparent; /* Remove background */
+    border: none;
+    cursor: pointer;
+    z-index: 10; /* Ensure button stays above other content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+}
+
+/* Change the color of the icon and size */
+.collapseButton svg {
+    fill: #444746; /* Set color to hex value (#444746) */
+    font-size: 24px; /* Icon size to match the one on the Gemini website */
+}
+
+/* Collapse button position is fixed (icon stays on the left during animation) */
+.sidebar:not(.collapsed) .collapseButton {
+    left: 20px; /* Position left when expanded */
+}
+
+/* Position the icon in the collapsed state */
+.collapsed .collapseButton {
+    left: 20px; /* Keep it at the left side even when collapsed */
+}
+
+/* Collapse effect on smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 64px; /* Default collapsed width for small screens */
+    }
+}

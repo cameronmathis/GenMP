@@ -1,0 +1,10 @@
+/* Container for the chat box */
+.chatBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-end; /* Align items to the bottom */
+    height: 100vh; /* Full viewport height */
+    padding-bottom: 20px; /* Add space at the bottom */
+}

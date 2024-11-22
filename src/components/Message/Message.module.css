@@ -1,0 +1,42 @@
+.messageContainer {
+    width: 100%; /* Make sure it takes up full available width */
+    max-width: 810px; /* Set a max width of 810px for regular laptop sizes */
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: 1px solid #ccc; /* Light border color */
+    background-color: #f7f7f7; /* Light gray background */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 10px;
+    /* transition: border-color 0.3s ease, box-shadow 0.3s ease; Smooth transitions */
+}
+
+.userMessage {
+    font-size: 16px;
+    color: #333; /* Text color */
+    text-align: right;
+}
+
+.aiMessage {
+    font-size: 16px;
+    color: #333; /* Text color */
+    text-align: left;
+}
+
+/* Media query to handle responsiveness */
+@media (max-width: 1024px) {
+    .messageContainer {
+        max-width: 90%; /* Shrinks to 90% of the screen width on smaller laptops/tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .messageContainer {
+        max-width: 80%; /* Shrinks to 80% on tablets and below */
+    }
+}
+
+@media (max-width: 480px) {
+    .messageContainer {
+        max-width: 70%; /* Further shrinks to 70% on mobile devices */
+    }
+}

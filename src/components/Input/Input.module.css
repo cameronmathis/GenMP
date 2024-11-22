@@ -1,0 +1,53 @@
+.inputField {
+    width: 100%; /* Make sure it takes up full available width */
+    max-width: 810px; /* Set a max width of 810px for regular laptop sizes */
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: 1px solid #ccc; /* Light border color */
+    background-color: #f7f7f7; /* Light gray background */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 16px;
+    color: #333; /* Text color */
+    display: flex;
+    align-items: center;
+    outline: none; /* Remove default focus outline */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    margin: 0 auto; /* Center the input field horizontally */
+}
+
+/* When the input field is focused */
+.inputField:focus {
+    border-color: #4285f4; /* Blue border on focus */
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.3); /* Soft blue shadow on focus */
+}
+
+/* Styling for the placeholder */
+.inputField::placeholder {
+    color: #aaa; /* Light gray placeholder text */
+    text-align: center; /* Center the placeholder text */
+}
+
+/* Icon inside the input field */
+.inputField .searchIcon {
+    margin-right: 12px; /* Space between the icon and text */
+    color: #aaa; /* Light gray icon */
+}
+
+/* Media query to handle responsiveness */
+@media (max-width: 1024px) {
+    .inputField {
+        max-width: 90%; /* Shrinks to 90% of the screen width on smaller laptops/tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .inputField {
+        max-width: 80%; /* Shrinks to 80% on tablets and below */
+    }
+}
+
+@media (max-width: 480px) {
+    .inputField {
+        max-width: 70%; /* Further shrinks to 70% on mobile devices */
+    }
+}

@@ -1,0 +1,10 @@
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.spinner {
+    color: #444746; /* MUI CircularProgress color */
+}

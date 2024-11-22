@@ -1,0 +1,8 @@
+FROM node:14-alpine as build
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json ./
+RUN npm i --legacy-peer-deps --silent
+COPY . ./
+EXPOSE 80
+CMD ["npm", "start"]
