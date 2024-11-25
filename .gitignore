@@ -8,6 +8,8 @@ node_modules
 coverage
 coverage.json
 typechain
+target
+tsconfig.tsbuildinfo
 
 ### VS Code ###
 .vscode/

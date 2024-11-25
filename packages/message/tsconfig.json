@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./target",
+        "rootDir": "./src",
+        "declaration": true,
+        "declarationDir": "./target",
+        "preserveSymlinks": true
+    },
+    "include": ["src", "types.d.ts"]
+}

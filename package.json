@@ -6,10 +6,15 @@
     "license": "Apache-2.0",
     "private": false,
     "main": "index.tsx",
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
-        "start": "vite",
+        "start": "npm run build:packages && vite",
         "test": "jest --",
-        "build": "vite build",
+        "build": "npm run build:app",
+        "build:app": "npm run build:packages && vite build",
+        "build:packages": "npm run build --workspaces --if-present",
         "preview": "vite preview --port 80",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
@@ -41,6 +46,7 @@
         "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
         "@vitejs/plugin-react": "^1.0.7",
+        "copyfiles": "^2.4.1",
         "eslint": "^9.15.0",
         "eslint-plugin-react": "^7.37.2",
         "eslint-plugin-react-hooks": "^5.0.0",
@@ -84,10 +90,7 @@
                 "lines": 80,
                 "statements": 80
             }
-        },
-        "testPathIgnorePatterns": [
-            "/__utils__/"
-        ]
+        }
     },
     "eslintConfig": {
         "extends": [

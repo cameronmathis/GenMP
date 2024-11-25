@@ -1,10 +1,9 @@
 import { Box } from '@mui/material';
+import { LoadingSpinner } from '@packages/loading-spinner';
+import { Message } from '@packages/message';
 import React from 'react';
 
 import { useGMP } from '../../context/Context';
-import { Message } from '../Message/Message';
-
-import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import styles from './ChatBox.module.css';
 
 export function ChatBox() {
@@ -31,7 +30,7 @@ export function ChatBox() {
             {getMessages().map((message, i) => (
                 <Message key={i} text={message.text} source={message.source} />
             ))}
-            <LoadingSpinner isLoading={state.isLoading} />
+            <LoadingSpinner isLoading={state.isLoading} size={20} />
         </Box>
     );
 }
