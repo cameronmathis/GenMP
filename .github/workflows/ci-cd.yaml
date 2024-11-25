@@ -13,9 +13,6 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Print environment
-            - run: echo "💡 Deploying to ${{ matrix.environment }}." 
-            
             - name: Checkout code
               uses: actions/checkout@v2
 
