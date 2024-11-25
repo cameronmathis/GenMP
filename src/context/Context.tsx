@@ -1,10 +1,5 @@
-import React, {
-    createContext,
-    Dispatch,
-    PropsWithChildren,
-    useContext,
-    useReducer,
-} from 'react';
+import React, { createContext, Dispatch, PropsWithChildren, useContext, useReducer } from 'react';
+
 import * as geminiService from '../gemini';
 import { Action } from '../reducer/actions';
 import { Reducer } from '../reducer/reducer';
@@ -16,7 +11,7 @@ export interface Context {
     state: GMPState;
     dispatch: Dispatch<Action>;
 
-    sendPrompt(prompt: string): Promise<string>;
+    sendPrompt(prompt: string): Promise<string | void>;
 }
 
 const initialState: GMPState = {
@@ -33,20 +28,25 @@ export const GMPContext = createContext<Context | null>(null);
 export function GMPProvider({ children }: PropsWithChildren<ProviderProps>) {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
-    async function sendPrompt(prompt: string): Promise<string> {
+    async function sendPrompt(prompt: string): Promise<string | void> {
         try {
             dispatch({ type: 'SEND_PROMPT', data: { prompt } });
 
-            return await geminiService.sendPrompt(prompt).then((result) => {
-                dispatch({
-                    type: 'STORE_RESULT',
-                    data: {
-                        result,
-                    },
-                });
+            return await geminiService
+                .sendPrompt(prompt)
+                .then((result) => {
+                    dispatch({
+                        type: 'STORE_RESULT',
+                        data: {
+                            result,
+                        },
+                    });
 
-                return result;
-            });
+                    return result;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         } finally {
             dispatch({ type: 'SET_IS_NOT_LOADING' });
         }
