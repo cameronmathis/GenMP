@@ -6,4 +6,26 @@
     justify-content: flex-end; /* Align items to the bottom */
     height: 100vh; /* Full height */
     padding-bottom: 20px; /* Add space at the bottom */
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition for margin */
+}
+
+/* When sidebar is expanded (on large screens), shift the content */
+.sidebar:not(.collapsed) + .main {
+    margin-left: 320px; /* Shift content behind the expanded sidebar */
+}
+
+/* When sidebar is collapsed, shift the content behind the collapsed sidebar */
+.sidebar.collapsed + .main {
+    margin-left: 64px; /* Shift content behind the collapsed sidebar */
+}
+
+/* For smaller screens (less than 768px), the main content should go behind the sidebar when expanded */
+@media (max-width: 768px) {
+    .sidebar.collapsed + .main {
+        margin-left: 64px; /* Keep content behind collapsed sidebar */
+    }
+
+    .sidebar:not(.collapsed) + .main {
+        margin-left: 320px; /* Push content behind expanded sidebar */
+    }
 }

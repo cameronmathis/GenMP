@@ -1,23 +1,24 @@
-import { Menu as MenuIcon } from '@mui/icons-material';
 import React, { useState } from 'react';
+
+import { MenuButton } from './Buttons/MenuButton/MenuButton';
+import { SettingsButton } from './Buttons/SettingsButton/SettingsButton';
 
 import styles from './Sidebar.module.css';
 
 export function Sidebar() {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
-    const toggleSidebar = () => {
+    function toggleSidebar() {
         setIsCollapsed(!isCollapsed);
-    };
+    }
 
     return (
         <div
             className={`${styles.sidebar} ${
                 isCollapsed ? styles.collapsed : ''
             }`}>
-            <button className={styles.collapseButton} onClick={toggleSidebar}>
-                <MenuIcon />
-            </button>
+            <MenuButton onClick={toggleSidebar} />
+            <SettingsButton isCollapsed={isCollapsed} />
         </div>
     );
 }

@@ -1,0 +1,27 @@
+/* Dark mode toggle container */
+.darkModeToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/* Dark mode label */
+.darkModeLabel {
+    font-size: 14px;
+    color: #444746;
+    margin-bottom: 0;
+    margin-right: 10px; /* Space between label and switch */
+    white-space: nowrap; /* Prevents the label from wrapping onto the next line */
+    overflow: hidden; /* Hides overflow in case the label is too wide */
+    text-overflow: ellipsis; /* Adds ellipsis if the label text is too long */
+}
+
+/* Custom styling for the MUI Switch (dark mode toggle) */
+.switch {
+    flex-shrink: 0; /* Prevent switch from shrinking */
+}

@@ -1,0 +1,66 @@
+.newChatButton {
+    position: absolute;
+    top: 80px; /* Below the hamburger icon */
+    left: 13px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Circle size when collapsed */
+    height: 40px; /* Circle size when collapsed */
+    border-radius: 50%; /* Circle shape when collapsed */
+    transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    padding: 0;
+}
+
+/* Center the icon within the circle */
+.newChatButton svg {
+    fill: #444746; /* Dark gray icon color */
+    font-size: 24px; /* Icon size to fit within the circle */
+    margin: 0; /* Remove any margin that might misalign the icon */
+}
+
+/* When sidebar is collapsed, hide the text */
+.newChatButton.collapsed .newChatText {
+    display: none; /* Prevent the text from taking up space */
+}
+
+/* Ensure the button stays a circle when collapsed */
+.newChatButton.collapsed {
+    width: 40px; /* Circle width */
+    height: 40px; /* Circle height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%; /* Keep the circle shape when collapsed */
+}
+
+/* Text styling */
+.newChatText {
+    margin: 0 8px;
+    font-size: 14px;
+    color: #444746;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* When sidebar is expanded, change to pill shape */
+.newChatButton:not(.collapsed) {
+    padding: 8px 16px; /* Padding to make the pill larger */
+    width: auto; /* Let the width adjust to text */
+    max-width: 240px; /* Max width for pill */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px; /* Ensure smooth transition to pill shape */
+}
+
+/* Show text when expanded */
+.newChatButton:not(.collapsed) .newChatText {
+    opacity: 1;
+    display: inline; /* Make sure text takes up space */
+}

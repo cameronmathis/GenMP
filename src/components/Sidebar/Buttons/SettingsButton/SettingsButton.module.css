@@ -1,0 +1,40 @@
+/* Container for the settings button and submenu */
+.settingsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Keeps button at the bottom */
+    flex-grow: 1; /* Ensures settings button stays at the bottom */
+    gap: 10px; /* Space between button and submenu */
+}
+
+/* Settings button at the bottom */
+.settingsButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Absolute positioning to keep it at the bottom */
+    bottom: 20px; /* Keeps the button at the bottom of the sidebar */
+    left: 20px;
+}
+
+.settingsButton svg {
+    fill: #444746;
+    font-size: 24px;
+}
+
+.settingsText {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #444746;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+}
+
+.settingsButton:not(.collapsed) .settingsText {
+    opacity: 1; /* Show text when expanded */
+}
