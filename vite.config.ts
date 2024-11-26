@@ -32,11 +32,7 @@ export default defineConfig({
     },
     optimizeDeps: {
         // Exclude specific packages from Vite's dependency pre-bundling
-        exclude: [
-            '/node_modules/',
-            '@packages/loading-spinner',
-            '@packages/message',
-        ], // Prevents the component package from being pre-bundled
+        exclude: ['/node_modules/'], // Prevents the component package from being pre-bundled
     },
     build: {
         rollupOptions: {
