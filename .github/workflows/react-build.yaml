@@ -4,7 +4,6 @@ on:
     push:
         branches: [develop]
     pull_request:
-        # The branches below must be a subset of the branches above
         branches: [develop]
 
 jobs:
@@ -13,19 +12,25 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            # Step 1: Checkout the code
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
+            # Step 2: Set up Node.js (use a modern version)
             - name: Install Node.js
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v3
               with:
-                  node-version: 14.x
+                  node-version: 18
+                  cache: 'npm'
 
+            # Step 3: Install dependencies
             - name: Install NPM packages
-              run: npm i --legacy-peer-deps
+              run: npm ci --legacy-peer-deps
 
+            # Step 4: Build the project
             - name: Build project
               run: CI=false npm run build
 
+            # Step 5: Run tests
             # - name: Run tests
             #   run: npm run test
