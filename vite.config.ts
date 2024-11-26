@@ -31,10 +31,14 @@ export default defineConfig({
         preserveSymlinks: true, // Ensures Vite correctly resolves symlinked dependencies (useful for monorepos)
     },
     optimizeDeps: {
+        // Ensure critical dependencies like React are bundled correctly
+        include: ['react', 'react-dom'],
         // Exclude specific packages from Vite's dependency pre-bundling
         exclude: ['/node_modules/'], // Prevents the component package from being pre-bundled
     },
     build: {
+        // Ensure Vite resolves all assets correctly
+        outDir: 'dist', // This should be your build directory
         rollupOptions: {
             // Keep node_modules as external during the build process
             external: [/node_modules/],
