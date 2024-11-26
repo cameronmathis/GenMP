@@ -28,6 +28,8 @@ jobs:
             # Step 4: Build the project
             - name: Build project
               run: CI=false npm run build
+              env:
+                  VITE_GOOGLE_GEMINI_API_KEY: ${{ vars.GOOGLE_GEMINI_API_KEY }}
 
             # Step 5: Run tests
             # - name: Run tests
