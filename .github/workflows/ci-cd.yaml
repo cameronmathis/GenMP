@@ -9,27 +9,31 @@ jobs:
     build:
         name: Build
         runs-on: ubuntu-latest
-
         steps:
+            # Step 1: Checkout the code
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
-            - name: Install Node.js
-              uses: actions/setup-node@v1
+            # Step 2: Set up Node.js (use a modern version) and enable npm caching
+            - name: Set up Node.js and cache dependencies
+              uses: actions/setup-node@v3
               with:
-                  node-version: 14.x
+                  node-version: '18'
+                  cache: 'npm'
 
+            # Step 3: Install dependencies using npm ci (faster and more reliable in CI)
             - name: Install NPM packages
-              run: npm i --legacy-peer-deps
+              run: npm ci --legacy-peer-deps
 
+            # Step 4: Build the project
             - name: Build project
               run: CI=false npm run build
-              env:
-                  VITE_GOOGLE_GEMINI_API_KEY: ${{ vars.GOOGLE_GEMINI_API_KEY }}
 
+            # Step 5: Run tests
             # - name: Run tests
             #   run: npm run test
 
+            # Step 6: Upload production-ready build files for deployment
             - name: Upload production-ready build files
               uses: actions/upload-artifact@v4
               with:
@@ -42,13 +46,15 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Download artifact
+            # Step 1: Download the production build artifact
+            - name: Download production build artifact
               uses: actions/download-artifact@v4
               with:
                   name: production-files
                   path: ./dist
 
-            - name: Deploy to gh-pages
+            # Step 2: Deploy to GitHub Pages
+            - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
