@@ -1,4 +1,15 @@
 {
+    "sidebar": {
+        "menuItems": {
+            "newChat": "New Chat",
+            "settings": {
+                "text": "Settings",
+                "settingsItems": {
+                    "darkModeSwitch": "Dark Mode"
+                }
+            }
+        }
+    },
     "main": {
         "input": {
             "placeholder": "Ask GenX..."
