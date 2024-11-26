@@ -1,13 +1,10 @@
-type Message = {
-    text: string;
+export type Message = {
+    role: 'user' | 'assistant';
+    content: string;
     date: Date;
 };
 
 export type GMPState = {
     isLoading: boolean;
-    prompt: Message | null;
-    allPrompts: Message[];
-    result: Message | null;
-    allResults: Message[];
-    showResult: boolean;
+    messages: Message[];
 };

@@ -3,23 +3,29 @@ import { GMPState } from './state';
 
 export function Reducer(state: GMPState, action: Action): GMPState {
     switch (action.type) {
-        case 'SEND_PROMPT':
+        case 'STORE_INPUT':
             return {
                 ...state,
-                prompt: { text: action.data.prompt, date: new Date() },
-                allPrompts: [
-                    ...state.allPrompts,
-                    { text: action.data.prompt, date: new Date() },
+                messages: [
+                    ...state.messages,
+                    {
+                        role: 'user',
+                        content: action.data.input,
+                        date: new Date(),
+                    },
                 ],
                 isLoading: true,
             };
-        case 'STORE_RESULT':
+        case 'STORE_RESPONSE':
             return {
                 ...state,
-                result: { text: action.data.result, date: new Date() },
-                allResults: [
-                    ...state.allResults,
-                    { text: action.data.result, date: new Date() },
+                messages: [
+                    ...state.messages,
+                    {
+                        role: 'assistant',
+                        content: action.data.response,
+                        date: new Date(),
+                    },
                 ],
                 isLoading: false,
             };

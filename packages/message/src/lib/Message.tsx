@@ -4,45 +4,76 @@ import React from 'react';
 import styles from './Message.module.css';
 
 export type MessageProps = {
-    text: string;
-    source?: 'user' | 'ai';
+    role: 'user' | 'assistant';
+    content: string;
 };
 
-export function Message({ text, source }: MessageProps) {
+export function Message({ role, content }: MessageProps) {
+    function removePrefixes(text: string): string {
+        // Regular expression to match "Assistant:" or "Ai:" at the start of the string, case-insensitively
+        const prefixRegex = /^(Assistant:|Ai:)\s*/i;
+
+        // Remove all occurrences of the prefixes at the start of the string
+        while (prefixRegex.test(text)) {
+            text = text.replace(prefixRegex, '');
+        }
+
+        return text;
+    }
+
+    function parseTextWithFormatting(text: string): (JSX.Element | string)[] {
+        // Match patterns for **bold**, *italic*, <u>underline</u>, and ~~strikethrough~~
+        const parts = text.split(
+            /(\*\*[^*]+\*\*|\*[^*]+\*|<u>[^<]+<\/u>|~~[^~]+~~)/
+        );
+        return parts.map((part, index) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                // Bold text (remove **)
+                return (
+                    <span key={index} style={{ fontWeight: 'bold' }}>
+                        {part.slice(2, -2)}
+                    </span>
+                );
+            } else if (part.startsWith('*') && part.endsWith('*')) {
+                // Italic text (remove *)
+                return (
+                    <span key={index} style={{ fontStyle: 'italic' }}>
+                        {part.slice(1, -1)}
+                    </span>
+                );
+            } else if (part.startsWith('<u>') && part.endsWith('</u>')) {
+                // Underline text (remove <u> and </u>)
+                return (
+                    <span key={index} style={{ textDecoration: 'underline' }}>
+                        {part.slice(3, -4)}
+                    </span>
+                );
+            } else if (part.startsWith('~~') && part.endsWith('~~')) {
+                // Strikethrough text (remove ~~)
+                return (
+                    <span
+                        key={index}
+                        style={{ textDecoration: 'line-through' }}>
+                        {part.slice(2, -2)}
+                    </span>
+                );
+            }
+            // Return regular text
+            return part;
+        });
+    }
+
     return (
         <Box className={styles.messageContainer}>
             <Typography
                 style={{ whiteSpace: 'pre-line' }}
                 className={
-                    source === 'user' ? styles.userMessage : styles.aiMessage
+                    role === 'user'
+                        ? styles.userMessage
+                        : styles.assistantMessage
                 }>
-                {parseTextWithFormatting(text)}
+                {parseTextWithFormatting(removePrefixes(content))}
             </Typography>
         </Box>
     );
-}
-
-function parseTextWithFormatting(text: string): (JSX.Element | string)[] {
-    // Match text surrounded by single or double asterisks
-    const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/);
-
-    return parts.map((part, index) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-            // Bold text (remove double asterisks)
-            return (
-                <span key={index} style={{ fontWeight: 'bold' }}>
-                    {part.slice(2, -2)}
-                </span>
-            );
-        } else if (part.startsWith('*') && part.endsWith('*')) {
-            // Italic text (remove single asterisks)
-            return (
-                <span key={index} style={{ fontStyle: 'italic' }}>
-                    {part.slice(1, -1)}
-                </span>
-            );
-        }
-        // Regular text remains as is
-        return part;
-    });
 }

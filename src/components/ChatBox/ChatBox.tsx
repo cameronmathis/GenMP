@@ -4,31 +4,26 @@ import { Message } from '@packages/message';
 import React from 'react';
 
 import { useGMP } from '../../context/Context';
+import { Message as MessageType } from '../../reducer/state';
 import styles from './ChatBox.module.css';
 
 export function ChatBox() {
     const { state } = useGMP();
+    const messages: MessageType[] = state.messages;
 
-    type Message = { text: string; date: Date; source?: 'user' | 'ai' };
-    const prompts: Message[] = state.allPrompts;
-    const results: Message[] = state.allResults;
-
-    function getMessages() {
-        prompts.forEach((prompt) => {
-            prompt.source = 'user';
-        });
-        results.forEach((result) => {
-            result.source = 'ai';
-        });
-        const allMessages = [...prompts, ...results];
-        allMessages.sort((a, b) => a.date.getTime() - b.date.getTime());
-        return allMessages;
+    function sortMessages(localMessages: MessageType[]) {
+        localMessages.sort((a, b) => a.date.getTime() - b.date.getTime());
+        return localMessages;
     }
 
     return (
         <Box className={styles.chatBox}>
-            {getMessages().map((message, i) => (
-                <Message key={i} text={message.text} source={message.source} />
+            {sortMessages(messages).map((message, i) => (
+                <Message
+                    key={i}
+                    role={message.role}
+                    content={message.content}
+                />
             ))}
             <LoadingSpinner isLoading={state.isLoading} size={20} />
         </Box>

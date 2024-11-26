@@ -8,7 +8,7 @@ i18n.use(Backend)
         fallbackLng: 'en',
         debug: false,
         backend: {
-            loadPath: '/GenMP/locales/{{lng}}/translation.json',
+            loadPath: '/GenX/locales/{{lng}}/translation.json',
         },
     });
 

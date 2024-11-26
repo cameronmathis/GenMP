@@ -1,14 +1,14 @@
-export interface SendPrompt {
-    type: 'SEND_PROMPT';
+export interface StoreInput {
+    type: 'STORE_INPUT';
     data: {
-        prompt: string;
+        input: string;
     };
 }
 
-export interface StoreResult {
-    type: 'STORE_RESULT';
+export interface StoreResponse {
+    type: 'STORE_RESPONSE';
     data: {
-        result: string;
+        response: string;
     };
 }
 
@@ -20,4 +20,8 @@ export interface SetIsNotLoading {
     type: 'SET_IS_NOT_LOADING';
 }
 
-export type Action = SendPrompt | StoreResult | SetIsLoading | SetIsNotLoading;
+export type Action =
+    | StoreInput
+    | StoreResponse
+    | SetIsLoading
+    | SetIsNotLoading;

@@ -2,6 +2,7 @@
     "name": "@packages/loading-spinner",
     "version": "1.0.0",
     "main": "target/lib.js",
+    "module": "src/lib.tsx",
     "files": [
         "target",
         "src"

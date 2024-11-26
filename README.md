@@ -1,12 +1,12 @@
-[![license](https://img.shields.io/github/license/cameronmathis/GenMP)](LICENSE)
-[![React Build](https://github.com/cameronmathis/GenMP/actions/workflows/react-build.yaml/badge.svg)](https://github.com/cameronmathis/GenMP/actions/workflows/react-build.yaml)
-[![CI/CD](https://github.com/cameronmathis/GenMP/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/cameronmathis/GenMP/actions/workflows/ci-cd.yaml)
-[![CodeQL](https://github.com/cameronmathis/GenMP/actions/workflows/codeql-analysis.yaml/badge.svg)](https://github.com/cameronmathis/GenMP/actions/workflows/codeql-analysis.yaml)
-[![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/GenMP/badge)](https://www.codefactor.io/repository/github/cameronmathis/GenMP)
+[![license](https://img.shields.io/github/license/cameronmathis/GenX)](LICENSE)
+[![React Build](https://github.com/cameronmathis/GenX/actions/workflows/react-build.yaml/badge.svg)](https://github.com/cameronmathis/GenX/actions/workflows/react-build.yaml)
+[![CI/CD](https://github.com/cameronmathis/GenX/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/cameronmathis/GenX/actions/workflows/ci-cd.yaml)
+[![CodeQL](https://github.com/cameronmathis/GenX/actions/workflows/codeql-analysis.yaml/badge.svg)](https://github.com/cameronmathis/GenX/actions/workflows/codeql-analysis.yaml)
+[![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/GenX/badge)](https://www.codefactor.io/repository/github/cameronmathis/GenX)
 
-# GenMP
+# GenX
 
-This is a GenMP Repository.
+This is the GenX Repository.
 
 ## Table of contents
 
@@ -18,11 +18,11 @@ This is a GenMP Repository.
 
 ## General info
 
-This is a web application that uses Google Gemini to generate meal plans.
+This is a web application that uses Google Gemini to generate content.
 
 ## Setup
 
-In order to view, visit [this think](http://cameronmathis.github.io/GenMP).
+In order to view, visit [this think](http://cameronmathis.github.io/GenX).
 
 ## Software details
 
@@ -35,7 +35,7 @@ Install all the required dependencies to run the application.
 ### `npm run start`
 
 Runs the app in the development mode.\
-Open [http://localhost/GenMP/](http://localhost/GenMP/) to view it in the browser.
+Open [http://localhost/GenX/](http://localhost/GenX/) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -51,14 +51,14 @@ Your app is ready to be deployed!
 ### `npm run preview`
 
 Previews the production build of the app.\
-Open [http://localhost/GenMP/](http://localhost/GenMP/) to view it in the browser.
+Open [http://localhost/GenX/](http://localhost/GenX/) to view it in the browser.
 
 ### `npm run deploy`
 
 Builds the app for production to the `dist` folder.\
 
 Deploys the app to GitHub Pages.\
-The app is live! Open [http://cameronmathis.github.io/GenMP](http://cameronmathis.github.io/GenMP) to view it in any browser.
+The app is live! Open [http://cameronmathis.github.io/GenX](http://cameronmathis.github.io/GenX) to view it in any browser.
 
 ## Status
 

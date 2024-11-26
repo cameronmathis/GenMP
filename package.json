@@ -1,8 +1,8 @@
 {
-    "name": "gen-mp",
+    "name": "gen-x",
     "version": "0.1.0",
-    "homepage": "https://cameronmathis.github.io/GenMP",
-    "repository": "https://github.com/cameronmathis/GenMP",
+    "homepage": "https://cameronmathis.github.io/GenX",
+    "repository": "https://github.com/cameronmathis/GenX",
     "license": "Apache-2.0",
     "private": false,
     "main": "index.tsx",
@@ -10,7 +10,7 @@
         "packages/*"
     ],
     "scripts": {
-        "start": "npm run build:packages && vite",
+        "start": "vite",
         "test": "jest --",
         "build": "npm run build:app",
         "build:app": "npm run build:packages && vite build",

@@ -1,7 +1,11 @@
-import React, { createContext, Dispatch, PropsWithChildren, useContext, useReducer } from 'react';
+import React, {
+    createContext,
+    PropsWithChildren,
+    useContext,
+    useReducer,
+} from 'react';
 
 import * as geminiService from '../gemini';
-import { Action } from '../reducer/actions';
 import { Reducer } from '../reducer/reducer';
 import { GMPState } from '../reducer/state';
 
@@ -9,18 +13,12 @@ export interface ProviderProps {}
 
 export interface Context {
     state: GMPState;
-    dispatch: Dispatch<Action>;
-
     sendPrompt(prompt: string): Promise<string | void>;
 }
 
 const initialState: GMPState = {
     isLoading: false,
-    prompt: null,
-    allPrompts: [],
-    result: null,
-    allResults: [],
-    showResult: false,
+    messages: [],
 };
 
 export const GMPContext = createContext<Context | null>(null);
@@ -28,21 +26,27 @@ export const GMPContext = createContext<Context | null>(null);
 export function GMPProvider({ children }: PropsWithChildren<ProviderProps>) {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
-    async function sendPrompt(prompt: string): Promise<string | void> {
+    async function sendPrompt(input: string): Promise<string | void> {
         try {
-            dispatch({ type: 'SEND_PROMPT', data: { prompt } });
+            dispatch({ type: 'STORE_INPUT', data: { input } });
+
+            const prompt = state.messages
+                ? `Continue the conversation: ${state.messages
+                      .map((message) => `${message.role}: ${message.content}`)
+                      .join('\n')}\n\nHuman: ${input}`
+                : input;
 
             return await geminiService
                 .sendPrompt(prompt)
-                .then((result) => {
+                .then((response) => {
                     dispatch({
-                        type: 'STORE_RESULT',
+                        type: 'STORE_RESPONSE',
                         data: {
-                            result,
+                            response,
                         },
                     });
 
-                    return result;
+                    return response;
                 })
                 .catch((error) => {
                     console.error(error);
@@ -54,7 +58,6 @@ export function GMPProvider({ children }: PropsWithChildren<ProviderProps>) {
 
     const value: Context = {
         state,
-        dispatch,
         sendPrompt,
     };
 
