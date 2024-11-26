@@ -12,8 +12,7 @@
     "scripts": {
         "start": "vite",
         "test": "jest --",
-        "build": "npm run build:app",
-        "build:app": "npm run build:packages && vite build",
+        "build": "npm run build:packages && vite build",
         "build:packages": "npm run build --workspaces --if-present",
         "preview": "vite preview --port 80",
         "predeploy": "npm run build",
