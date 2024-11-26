@@ -22,7 +22,7 @@ This is a web application that uses Google Gemini to generate content.
 
 ## Setup
 
-In order to view, visit [this think](http://cameronmathis.github.io/GenX).
+In order to view, visit [this link](http://cameronmathis.github.io/GenX).
 
 ## Software details
 
